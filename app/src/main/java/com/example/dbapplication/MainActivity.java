@@ -2,6 +2,7 @@ package com.example.dbapplication;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -14,12 +15,13 @@ public class MainActivity extends AppCompatActivity {
     EditText editName, editAge;
     Switch switchIsActive;
    // ListView listViewStudent;
+    Intent intent;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         buttonAdd = findViewById(R.id.buttonAdd);
-       // buttonViewAll = findViewById(R.id.buttonViewAll);
+        buttonViewAll = findViewById(R.id.buttonViewAll);
         editName = findViewById(R.id.editTextName);
         editAge = findViewById(R.id.editTextAge);
         switchIsActive = findViewById(R.id.switchStudent);
@@ -38,6 +40,14 @@ buttonAdd.setOnClickListener(new View.OnClickListener() {
         }
         dbhelper dbHelper = new dbhelper(MainActivity.this);
         dbHelper.addStudent(studentModel);
+    }
+});
+buttonViewAll.setOnClickListener(new View.OnClickListener() {
+    @Override
+    public void onClick(View v) {
+        intent=new Intent(MainActivity.this,ViewStudents.class);
+        startActivity(intent);
+
     }
 });
     }
