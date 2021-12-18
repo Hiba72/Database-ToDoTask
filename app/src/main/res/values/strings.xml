@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">DBApplication</string>
+    <string name="StudentName">student Name</string>
+    <string name="Age">Student Age</string>
+    <string name="ActiveCustomer">Status</string>
+    <string name="Add">Add student</string>
 </resources>
