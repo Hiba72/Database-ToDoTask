@@ -12,7 +12,7 @@ import java.util.List;
 
 public class myRecyclerViewAdatpter extends RecyclerView.Adapter<myRecyclerViewAdatpter.MyViewHolder> {
     List<StudentModel> list;
-
+   public static String name;
 
     public myRecyclerViewAdatpter(List<StudentModel> list) {
         this.list=list;
@@ -30,6 +30,7 @@ public class myRecyclerViewAdatpter extends RecyclerView.Adapter<myRecyclerViewA
     public void onBindViewHolder(@NonNull myRecyclerViewAdatpter.MyViewHolder holder, int position) {
         holder.data=list.get(position);
         holder.stdName.setText(holder.data.getName());
+        name=holder.data.getName();
         holder.stdAge.setText(String.valueOf(holder.data.getAge()));
         if(holder.data.isActive()) {
             holder.stdStatus.setText("true");

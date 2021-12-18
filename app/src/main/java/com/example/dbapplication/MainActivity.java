@@ -15,7 +15,8 @@ import android.widget.Toast;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
-    Button buttonAdd, buttonViewAll;
+    public boolean isShow=false;
+    Button buttonAdd, buttonViewAll,buttondel;
     EditText editName, editAge;
     Switch switchIsActive;
    // ListView listViewStudent;
@@ -28,6 +29,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        buttondel=findViewById(R.id.buttond);
         buttonAdd = findViewById(R.id.buttonAdd);
         buttonViewAll = findViewById(R.id.buttonViewAll);
         editName = findViewById(R.id.editTextName);
@@ -62,8 +64,25 @@ buttonViewAll.setOnClickListener(new View.OnClickListener() {
         recyclerView.setLayoutManager(layoutManager);
         adapter = new myRecyclerViewAdatpter(list);
         recyclerView.setAdapter(adapter);
+        isShow=true;
 
     }
 });
+if(isShow) {
+    buttondel.setOnClickListener(new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+             dbhelper dbHelper = new dbhelper(MainActivity.this);
+             dbHelper.deleteRecord();
+        }
+    });
+}
+//buttondel.setOnClickListener(new View.OnClickListener() {
+//    @Override
+//    public void onClick(View v) {
+//   //     dbhelper dbHelper = new dbhelper(MainActivity.this);
+//      //  dbHelper.deleteRecord();
+//    }
+//});
     }
 }
