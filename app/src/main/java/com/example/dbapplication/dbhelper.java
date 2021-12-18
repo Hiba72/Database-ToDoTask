@@ -2,10 +2,13 @@ package com.example.dbapplication;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
 import androidx.annotation.Nullable;
+
+import java.util.ArrayList;
 
 public class dbhelper extends SQLiteOpenHelper {
     public static final String STUDENT_NAME = "STUDENTName";
@@ -41,5 +44,26 @@ public class dbhelper extends SQLiteOpenHelper {
         db.insert(STUDENT_TABLE, null, cv);
         db.close();
     }
+    public ArrayList<StudentModel> getAllStudents() {
 
+        SQLiteDatabase db = this.getReadableDatabase();
+
+        Cursor cursorCourses = db.rawQuery("SELECT * FROM " + STUDENT_TABLE, null);
+
+        ArrayList<StudentModel> studentArrayList = new ArrayList<>();
+
+        // moving our cursor to first position.
+        if (cursorCourses.moveToFirst()) {
+            do {
+
+                studentArrayList.add(new StudentModel(cursorCourses.getString(1),
+                        cursorCourses.getInt(2),
+                        cursorCourses.getInt(3) == 1 ? true : false));
+            } while (cursorCourses.moveToNext());
+
+        }
+
+        cursorCourses.close();
+        return studentArrayList;
+    }
 }

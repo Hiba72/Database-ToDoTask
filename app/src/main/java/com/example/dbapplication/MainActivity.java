@@ -1,6 +1,8 @@
 package com.example.dbapplication;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -10,12 +12,18 @@ import android.widget.EditText;
 import android.widget.Switch;
 import android.widget.Toast;
 
+import java.util.List;
+
 public class MainActivity extends AppCompatActivity {
     Button buttonAdd, buttonViewAll;
     EditText editName, editAge;
     Switch switchIsActive;
    // ListView listViewStudent;
     Intent intent;
+    List<StudentModel> list;
+    private RecyclerView recyclerView;
+    private RecyclerView.Adapter adapter;
+    private RecyclerView.LayoutManager layoutManager;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -45,8 +53,15 @@ buttonAdd.setOnClickListener(new View.OnClickListener() {
 buttonViewAll.setOnClickListener(new View.OnClickListener() {
     @Override
     public void onClick(View v) {
-        intent=new Intent(MainActivity.this,ViewStudents.class);
-        startActivity(intent);
+        dbhelper dbHelper = new dbhelper(MainActivity.this);
+        list = dbHelper.getAllStudents();
+        recyclerView = findViewById(R.id.myRecyclerView);
+
+        recyclerView.setHasFixedSize(true);
+        layoutManager=new LinearLayoutManager(MainActivity.this);
+        recyclerView.setLayoutManager(layoutManager);
+        adapter = new myRecyclerViewAdatpter(list);
+        recyclerView.setAdapter(adapter);
 
     }
 });
