@@ -18,7 +18,6 @@ import java.util.List;
 public class MainActivity extends AppCompatActivity {
     public boolean isShow=false;
     Button buttonAdd, buttonViewAll,buttondel;
-    TextView txt;
     EditText editName, editAge;
     Switch switchIsActive;
    // ListView listViewStudent;
@@ -31,7 +30,6 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        txt=findViewById(R.id.textView);
         buttondel=findViewById(R.id.buttond);
         buttonAdd = findViewById(R.id.buttonAdd);
         buttonViewAll = findViewById(R.id.buttonViewAll);

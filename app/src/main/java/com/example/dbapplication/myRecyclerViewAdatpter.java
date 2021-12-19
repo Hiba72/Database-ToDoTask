@@ -50,7 +50,7 @@ public class myRecyclerViewAdatpter extends RecyclerView.Adapter<myRecyclerViewA
            public void onClick(View v) {
                removeItem(holder.getAdapterPosition());
                dbhelper dbHelper = new dbhelper(sContext);
-               dbHelper.deleteRecord(holder.getAdapterPosition());
+               dbHelper.deleteRecord(holder.data.getName());
              //  MainActivity mainActivity= new MainActivity();
               // mainActivity.delRow(position);
            }

@@ -68,9 +68,9 @@ public class dbhelper extends SQLiteOpenHelper {
         cursorCourses.close();
         return studentArrayList;
     }
-    public void deleteRecord(int position){
+    public void deleteRecord(String position){
         SQLiteDatabase db = this.getWritableDatabase();
-        db.delete(STUDENT_TABLE,"STUDENTID=?",new String[]{String.valueOf(position)});
+        db.delete(STUDENT_TABLE,"STUDENTName=?",new String[]{String.valueOf(position)});
         db.close();
 
     }
