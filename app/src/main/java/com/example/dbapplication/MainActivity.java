@@ -10,6 +10,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Switch;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.List;
@@ -17,6 +18,7 @@ import java.util.List;
 public class MainActivity extends AppCompatActivity {
     public boolean isShow=false;
     Button buttonAdd, buttonViewAll,buttondel;
+    TextView txt;
     EditText editName, editAge;
     Switch switchIsActive;
    // ListView listViewStudent;
@@ -29,6 +31,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        txt=findViewById(R.id.textView);
         buttondel=findViewById(R.id.buttond);
         buttonAdd = findViewById(R.id.buttonAdd);
         buttonViewAll = findViewById(R.id.buttonViewAll);
@@ -62,21 +65,33 @@ buttonViewAll.setOnClickListener(new View.OnClickListener() {
         recyclerView.setHasFixedSize(true);
         layoutManager=new LinearLayoutManager(MainActivity.this);
         recyclerView.setLayoutManager(layoutManager);
-        adapter = new myRecyclerViewAdatpter(list);
+        adapter = new myRecyclerViewAdatpter(MainActivity.this,list);
         recyclerView.setAdapter(adapter);
         isShow=true;
 
     }
 });
-if(isShow) {
-    buttondel.setOnClickListener(new View.OnClickListener() {
-        @Override
-        public void onClick(View v) {
-             dbhelper dbHelper = new dbhelper(MainActivity.this);
-             dbHelper.deleteRecord();
-        }
-    });
-}
+
+//if(isShow) {
+//    buttondel.setOnClickListener(new View.OnClickListener() {
+//        @Override
+//        public void onClick(View v) {
+
+//            String n;
+//             dbhelper dbHelper = new dbhelper(MainActivity.this);
+//             n=dbHelper.deleteRecord();
+//txt.setText(n);
+//            list = dbHelper.getAllStudents();
+//            recyclerView = findViewById(R.id.myRecyclerView);
+//
+//            recyclerView.setHasFixedSize(true);
+//            layoutManager=new LinearLayoutManager(MainActivity.this);
+//            recyclerView.setLayoutManager(layoutManager);
+//            adapter = new myRecyclerViewAdatpter(list);
+//            recyclerView.setAdapter(adapter);
+    //    }
+  //  });
+//}
 //buttondel.setOnClickListener(new View.OnClickListener() {
 //    @Override
 //    public void onClick(View v) {
@@ -85,4 +100,16 @@ if(isShow) {
 //    }
 //});
     }
+//    public void delRow(){
+//        dbhelper dbHelper = new dbhelper(MainActivity.this);
+//        dbHelper.deleteRecord();
+////        list = dbHelper.getAllStudents();
+////            recyclerView = findViewById(R.id.myRecyclerView);
+////
+////            recyclerView.setHasFixedSize(true);
+////            layoutManager=new LinearLayoutManager(MainActivity.this);
+////            recyclerView.setLayoutManager(layoutManager);
+////            adapter = new myRecyclerViewAdatpter(list);
+////            recyclerView.setAdapter(adapter);
+//    }
 }

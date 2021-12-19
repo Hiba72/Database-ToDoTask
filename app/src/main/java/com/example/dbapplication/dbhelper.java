@@ -5,6 +5,8 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.util.Log;
+import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 
@@ -66,9 +68,10 @@ public class dbhelper extends SQLiteOpenHelper {
         cursorCourses.close();
         return studentArrayList;
     }
-    public void deleteRecord(){
+    public void deleteRecord(int position){
         SQLiteDatabase db = this.getWritableDatabase();
-        db.delete(STUDENT_TABLE,"STUDENTName=?",new String[]{myRecyclerViewAdatpter.name});
+        db.delete(STUDENT_TABLE,"STUDENTID=?",new String[]{String.valueOf(position)});
         db.close();
+
     }
 }
