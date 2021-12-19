@@ -38,7 +38,7 @@ public class MainActivity2 extends AppCompatActivity {
         btnup.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                dbhelper.updateRecord(editName1.getText().toString(),"24","true",intent.getStringExtra("value"));
+                dbhelper.updateRecord(editName1.getText().toString(),Integer.parseInt(editAge1.getText().toString()),"true",intent.getStringExtra("value"));
                 intent1=new Intent(MainActivity2.this,MainActivity.class);
                 startActivity(intent1);
             }
