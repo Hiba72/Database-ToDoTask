@@ -69,6 +69,21 @@ buttonViewAll.setOnClickListener(new View.OnClickListener() {
 
     }
 });
+//if(isShow){
+//    buton.setOnClickListener(new View.OnClickListener() {
+//        @Override
+//        public void onClick(View v) {
+//            intent=new Intent(MainActivity.this,MainActivity2.class);
+//            startActivity(intent);
+//        }
+//    });
+//}
+//    butonUpd.setOnClickListener(new View.OnClickListener() {
+//        @Override
+//        public void onClick(View v) {
+//            changeActivity();
+//        }
+//    });
 
 //if(isShow) {
 //    buttondel.setOnClickListener(new View.OnClickListener() {
@@ -98,16 +113,18 @@ buttonViewAll.setOnClickListener(new View.OnClickListener() {
 //    }
 //});
     }
-//    public void delRow(){
-//        dbhelper dbHelper = new dbhelper(MainActivity.this);
-//        dbHelper.deleteRecord();
-////        list = dbHelper.getAllStudents();
-////            recyclerView = findViewById(R.id.myRecyclerView);
-////
-////            recyclerView.setHasFixedSize(true);
-////            layoutManager=new LinearLayoutManager(MainActivity.this);
-////            recyclerView.setLayoutManager(layoutManager);
-////            adapter = new myRecyclerViewAdatpter(list);
-////            recyclerView.setAdapter(adapter);
+//    public void changeActivity(){
+//        Intent intent=new Intent(MainActivity.this,MainActivity2.class);
+//        startActivity(intent);
 //    }
+public void update(String n, String a, String s){
+        editName.setText(n);
+        editAge.setText(a);
+        if(s=="true"){
+            switchIsActive.isChecked();
+        }
+        else{
+            switchIsActive.toggle();
+        }
+}
 }

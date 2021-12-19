@@ -1,6 +1,7 @@
 package com.example.dbapplication;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,9 +16,11 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.List;
 
 public class myRecyclerViewAdatpter extends RecyclerView.Adapter<myRecyclerViewAdatpter.MyViewHolder> {
+   Intent intent;
     List<StudentModel> list;
    public static String name;
     private static Context sContext;
+
 
     public myRecyclerViewAdatpter(Context context,List<StudentModel> list) {
         sContext = context;
@@ -51,10 +54,43 @@ public class myRecyclerViewAdatpter extends RecyclerView.Adapter<myRecyclerViewA
                removeItem(holder.getAdapterPosition());
                dbhelper dbHelper = new dbhelper(sContext);
                dbHelper.deleteRecord(holder.data.getName());
-             //  MainActivity mainActivity= new MainActivity();
-              // mainActivity.delRow(position);
            }
        });
+        holder.btnupd.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Context contextt=v.getContext();
+                 intent=new Intent(contextt.getApplicationContext(),MainActivity2.class);
+                contextt.startActivity(intent);
+
+            }
+        });
+//        holder.btnupd.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//             MainActivity mainActivity=new MainActivity();
+//             mainActivity.changeActivity();
+//             //   holder.data=list.get(holder.getAdapterPosition());
+//
+//            //    MainActivity mainActivity=new MainActivity();
+//              //  mainActivity.update(holder.data.getName(),String.valueOf(holder.data.getAge()),String.valueOf(holder.data.isActive()));
+//
+////                holder.stdName.setText(holder.data.getName());
+////                holder.stdAge.setText(String.valueOf(holder.data.getAge()));
+////                if(holder.data.isActive()) {
+////                    holder.stdStatus.setText("true");
+////                }
+////                else{
+////                    holder.stdStatus.setText("false");
+////
+////                }
+//
+////                dbhelper dbHelper = new dbhelper(sContext);
+////                notifyItemChanged(holder.getAdapterPosition());
+////                dbHelper.updateRecord(String.valueOf(holder.stdName),String.valueOf(holder.stdAge),String.valueOf(holder.stdStatus),holder.data.getName());
+//
+//            }
+//        });
     }
     public void onClick(View view){
         MyViewHolder holder = (MyViewHolder) view.getTag();
@@ -85,7 +121,8 @@ public class myRecyclerViewAdatpter extends RecyclerView.Adapter<myRecyclerViewA
         TextView stdAge;
         TextView stdStatus;
         Button btndel;
-StudentModel data;
+        Button btnupd;
+        StudentModel data;
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
 
@@ -93,16 +130,10 @@ StudentModel data;
             stdAge = itemView.findViewById(R.id.studentAge);
             stdStatus = itemView.findViewById(R.id.studentStatus);
             btndel=itemView.findViewById(R.id.buttond);
-//            btndel.setOnClickListener(new View.OnClickListener() {
-//                @Override
-//                public void onClick(View v) {
-//onLongClick(v);
-////                    MainActivity mainActivity= new MainActivity();
-////                    mainActivity.delRow();
-//                  //  mainActivity.txt.setText("hiba");
-//                }
-//            });
+            btnupd=itemView.findViewById(R.id.btnUpdate);
+
         }
+
     }
     private void removeItem(int position) {
         list.remove(position);
