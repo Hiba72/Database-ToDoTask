@@ -74,7 +74,7 @@ public class dbhelper extends SQLiteOpenHelper {
         db.close();
 
     }
-    public void updateRecord(String name,int age,String status, String orgName){
+    public void updateRecord(String name,int age, boolean status, String orgName){
 
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
