@@ -61,6 +61,7 @@ public class myRecyclerViewAdatpter extends RecyclerView.Adapter<myRecyclerViewA
             public void onClick(View v) {
                 Context contextt=v.getContext();
                  intent=new Intent(contextt.getApplicationContext(),MainActivity2.class);
+                 intent.putExtra("value",String.valueOf(holder.data.getName()));
                 contextt.startActivity(intent);
 
             }

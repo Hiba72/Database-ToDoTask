@@ -74,12 +74,13 @@ public class dbhelper extends SQLiteOpenHelper {
         db.close();
 
     }
-    public void updateRecord(String name, String age, String status, String orgName){
+    public void updateRecord(String name,String age,String status, String orgName){
+
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
         values.put(STUDENT_NAME, name);
         values.put(STUDENT_AGE, age);
-        values.put(ACTIVE_STUDENT, status);
+        values.put(ACTIVE_STUDENT,status);
         db.update(STUDENT_TABLE, values, "STUDENTName=?", new String[]{orgName});
         db.close();
 

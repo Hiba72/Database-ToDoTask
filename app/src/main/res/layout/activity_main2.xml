@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity2">
     <EditText
-        android:id="@+id/editTextName"
+        android:id="@+id/editTextName2"
         android:layout_width="291dp"
         android:layout_height="40dp"
         android:layout_marginStart="8dp"
@@ -19,7 +19,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:id="@+id/editTextAge"
+        android:id="@+id/editTextAge2"
         android:layout_width="292dp"
         android:layout_height="40dp"
         android:layout_marginStart="8dp"
@@ -30,10 +30,10 @@
         android:inputType="number"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextName" />
+        app:layout_constraintTop_toBottomOf="@+id/editTextName2" />
 
     <Switch
-        android:id="@+id/switchStudent"
+        android:id="@+id/switchStudent2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -44,10 +44,10 @@
         android:visibility="visible"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextAge" />
+        app:layout_constraintTop_toBottomOf="@+id/editTextAge2" />
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/Up"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="149dp"
@@ -56,6 +56,6 @@
         android:text="Update"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/switchStudent" />
+        app:layout_constraintTop_toBottomOf="@+id/switchStudent2" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
